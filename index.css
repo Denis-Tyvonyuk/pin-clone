@@ -1,0 +1,487 @@
+/* Body should use flex to center the content */
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  /* Full viewport height */
+  margin: 0; /* Remove default margin */
+  font-family: Poppins;
+  background-color: #f4f4f4;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  flex-direction: row;
+}
+.colum {
+  flex-direction: column;
+}
+
+.HeadlineH1 {
+  font-family: Poppins;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 57.6px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+/* Container for holding both text and image content */
+.container {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  justify-content: center; /* Center the content horizontally */
+  gap: 24px; /* Space between text and image */
+
+  width: 90%; /* Prevent the content from stretching too wide */
+  max-width: 1200px; /* Limit max width */
+}
+
+.subcontainer {
+  padding: 100px 80px;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center; /* Vertically center the content */
+
+  gap: 16px; /* Space between text and button */
+  background: #003366; /* Dark blue background */
+  color: white; /* White text */
+  border-radius: 20px; /* Rounded corners */
+
+  flex: 1; /* Allow text content to take available space */
+}
+
+.subtext {
+  /* Sub Container */
+
+  display: flex;
+
+  padding: 0px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Image section styling */
+.img-content {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  flex: 1; /* Allow the image content to take available space */
+  padding: 20px;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.img-content img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: 520px; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+.text-button {
+  /* Text+button container */
+
+  /* Auto layout */
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.btn {
+  /* Button */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 14px 20px;
+  gap: 10px;
+
+  /* White */
+  background: #fbfbfb;
+  border-radius: 14px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.btn-text {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  text-decoration: none;
+}
+
+.advent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  background: #e0e7ef;
+}
+
+.text-container-advent {
+  /* Text Container */
+
+  /* Auto layout */
+  display: flex;
+  align-items: flex-start;
+  padding: 30px 300px 30px 50px;
+  gap: 16px;
+
+  /* White */
+  background: #fbfbfb;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.card-container-advent {
+  /* Text Container */
+  /* Text Container */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.container-advent {
+  /* Container */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0px;
+  gap: 20px;
+  width: 90%;
+  border-radius: 24px;
+}
+
+.Headline-H2-advent {
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 63px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #003366;
+}
+
+.item-container-advent {
+  /* Items Container */
+
+  /* Auto layout */
+  display: grid;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  grid-auto-flow: column;
+  grid-column: 3;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  gap: 40px;
+
+  margin: 0 auto;
+
+  /* White */
+  background: #fbfbfb;
+  border-radius: 14px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.cardtext-title {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #003366;
+  margin: 0;
+}
+
+.cardtext-under {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+
+.about-us {
+  /* About me */
+  width: 100%;
+  /* Auto layout */
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  /* White */
+  background: #fbfbfb;
+}
+
+.main-width {
+  width: 90%;
+}
+.container-about {
+  /* Container */
+
+  /* Auto layout */
+  display: flex;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+}
+
+.subcontainer-about {
+  /* Sub Container */
+
+  /* Auto layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+
+  border-radius: 16px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.about-us-title {
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 63px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #003366;
+}
+
+.learn-more {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #343434;
+}
+
+.about-us-btn {
+  /* Button 2 */
+
+  /* Auto layout */
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 40px;
+  height: 40px;
+
+  /* Dark|blue 100 */
+  background: #003366;
+  border-radius: 100px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.card-about {
+  /* Card */
+  max-width: 100%;
+  /* Dark|blue 100 */
+  padding: 25px;
+  background: #003366;
+  border-radius: 14px;
+}
+
+.container-card-about {
+  display: flex;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.card-about-text {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.our-courses {
+  width: 100%;
+  /* Auto layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  /* White */
+  background: #fbfbfb;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 8px;
+  justify-content: center;
+  width: 128px;
+  height: 47px;
+
+  background: #eff3f7;
+  border-radius: 45px;
+}
+
+.card-our {
+  border: 2px solid #003366;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  gap: 40px;
+}
+
+.container-our {
+  display: flex;
+  gap: 40px;
+}
+
+.card-our-detail {
+  /* Container */
+
+  /* Auto layout */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 12px;
+}
+
+.price {
+  /* price */
+
+  /* Auto layout */
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+
+  width: 209px;
+  height: 45px;
+}
+
+.btn-container {
+  /* Sub Container */
+
+  /* Auto layout */
+  display: flex;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+}
+
+.our-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 14px 30px;
+  gap: 10px;
+
+  width: 216px;
+  height: 58px;
+
+  background: #003366;
+  border-radius: 14px;
+}
