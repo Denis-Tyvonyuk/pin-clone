@@ -4,15 +4,13 @@ import LeftBar from "./components/leftBar/leftBar";
 import TopBar from "./components/topBar/topBar";
 
 const App = () => {
-  console.log("wwewwdww");
   return (
-    <div className="">
-      aaa
-      {/* <LeftBar />
+    <div className="app">
+      <LeftBar />
       <div className="content">
         <TopBar />
         <Gallery />
-      </div> */}
+      </div>
     </div>
   );
 };
