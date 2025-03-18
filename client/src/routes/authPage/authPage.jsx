@@ -22,7 +22,7 @@ const AuthPage = () => {
                 name="userName"
               ></input>
             </div>
-            <div className="displayName">
+            <div className="formGroup">
               <label htmlFor="displayName">Name</label>
               <input
                 type="displayName"

@@ -1,0 +1,13 @@
+{
+  "name": "lamapin-api",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file=.env index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.0.1",
+    "mongoose": "^8.12.1"
+  }
+}
