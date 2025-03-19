@@ -1,27 +1,16 @@
 import express from "express";
-import User from "../models/user.model.js";
-import bcrypt from "bcryptjs";
+import {
+  getUser,
+  registerUser,
+  loginUser,
+  logoutUser,
+} from "../controllers/user.controller.js";
 
 const router = express.Router();
 
-router.post("/create", async (req, res) => {
-  const userInfo = req.body;
+router.get("/:username", getUser);
+router.post("/auth/register", registerUser);
+router.post("/auth/login", loginUser);
+router.post("/auth/logout", logoutUser);
 
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-  await User.create({
-    displayName: req.body.displayName,
-    userName: req.body.userName,
-    email: req.body.email,
-    hashedPassword: hashedPassword,
-  });
-
-  res.json("user created");
-});
-
-router.delete("/", async (req, res) => {
-  const deleteUser = await User.deleteOne({ userName: "test" });
-
-  res.json(deleteUser);
-});
 export default router;
