@@ -45,8 +45,8 @@
 
 .loginLink {
   font-size: 18px;
-  width: 16px;
-  height: 16px;
+  padding: 16px;
+  border-radius: 32px;
 }
 
 .loginLink:hover {

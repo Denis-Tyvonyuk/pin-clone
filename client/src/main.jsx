@@ -29,7 +29,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/" element={<HomePage />} />
             <Route path="/create" element={<CreatePage />} />
             <Route path="/pin/:id" element={<PostPage />} />
-            <Route path="/:username" element={<ProfilePage />} />
+            <Route path="/profile/:username" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
           </Route>
           <Route path="/auth" element={<AuthPage />} />

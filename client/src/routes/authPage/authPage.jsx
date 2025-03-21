@@ -1,11 +1,17 @@
 import "./authPage.css";
 import Image from "../../components/Image/image";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import apiRequest from "../../utils/apiRequest";
+import useAuthStore from "../../utils/authStore";
 
 const AuthPage = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const { setCurrentUser } = useAuthStore();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +25,9 @@ const AuthPage = () => {
         `/users/auth/${isRegister ? "register" : "login"}`,
         data
       );
+
+      setCurrentUser(res.data);
+      navigate("/");
     } catch (err) {
       setError(err.response.data.message);
     }
@@ -34,10 +43,10 @@ const AuthPage = () => {
             <div className="formGroup">
               <label htmlFor="userName">User Name</label>
               <input
-                type="userName"
+                type="username"
                 placeholder="User Name"
                 required
-                name="userName"
+                name="username"
               ></input>
             </div>
             <div className="formGroup">
@@ -65,7 +74,7 @@ const AuthPage = () => {
                 placeholder="Password"
                 required
                 name="password"
-              ></input>
+              />
             </div>
             <button type="submit">Register</button>
             <p onClick={() => setIsRegister(false)}>

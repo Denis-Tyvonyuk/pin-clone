@@ -8,7 +8,7 @@ import connectDB from "./utils/connectDB.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use("/users", userRouter);
 app.use("/boards", boardRouter);
