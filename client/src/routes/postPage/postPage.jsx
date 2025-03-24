@@ -20,7 +20,6 @@ const PostPage = () => {
 
   if (!data) return "Pin not found";
 
-  console.log(id);
   return (
     <div className="postPage">
       {/* Back Button */}
@@ -41,7 +40,7 @@ const PostPage = () => {
 
         <div className="postDetails">
           <PostInteraction />
-          <Link to={`/${data.user.username}`} className="postUser">
+          <Link to={`/profile/${data.user.username}`} className="postUser">
             <Image
               src={data.user.img || "/general/noAvatar.png"}
               alt="User Avatar"
