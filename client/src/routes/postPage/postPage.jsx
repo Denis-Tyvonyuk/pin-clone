@@ -35,14 +35,14 @@ const PostPage = () => {
 
       <div className="postContainer">
         <div className="postImg">
-          <Image src={data.media} alt="Post Image" w={736} />
+          <Image path={data.media} alt="Post Image" w={736} />
         </div>
 
         <div className="postDetails">
-          <PostInteraction />
+          <PostInteraction postId={id} />
           <Link to={`/profile/${data.user.username}`} className="postUser">
             <Image
-              src={data.user.img || "/general/noAvatar.png"}
+              parh={data.user.img || "/general/noAvatar.png"}
               alt="User Avatar"
             />{" "}
             <span>{data.user.displayName}</span>

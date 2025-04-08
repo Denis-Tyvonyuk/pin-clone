@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import useEditorStore from "../../utils/editorStore";
 import Image from "../Image/image";
 
 const Workspace = ({ previewImg }) => {
-  const { textOptions, setTextOptions, canvasOptions, setCanvasOptions } =
-    useEditorStore();
+  const {
+    setSelectedLayer,
+    textOptions,
+    setTextOptions,
+    canvasOptions,
+    setCanvasOptions,
+  } = useEditorStore();
 
   useEffect(() => {
     console.log(textOptions);
@@ -19,10 +24,37 @@ const Workspace = ({ previewImg }) => {
     }
   }, [previewImg, canvasOptions, setCanvasOptions]);
 
-  const handleMouseMove = (e) => {};
-  const handleMouseUp = (e) => {};
-  const handleMouseLeave = (e) => {};
-  const handleMouseDown = (e) => {};
+  const itemRef = useRef(null);
+  const containerRef = useRef(null);
+  const dragging = useRef(false);
+  const offset = useRef({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    if (!dragging.current) return;
+
+    setTextOptions({
+      ...textOptions,
+      left: e.clientX - offset.current.x,
+      left: e.clientY - offset.current.y,
+    });
+  };
+
+  const handleMouseUp = (e) => {
+    dragging.current = false;
+  };
+
+  const handleMouseLeave = (e) => {
+    dragging.current = false;
+  };
+
+  const handleMouseDown = (e) => {
+    setSelectedLayer("text");
+    dragging.current = true;
+    offset.current = {
+      x: e.clientX - textOptions.left,
+      y: e.clientY - textOptions.top,
+    };
+  };
 
   return (
     <div className="workspace">
@@ -35,6 +67,7 @@ const Workspace = ({ previewImg }) => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        ref={containerRef}
       >
         <img src={previewImg.url} alt="" />
         {textOptions.text && (
@@ -46,6 +79,7 @@ const Workspace = ({ previewImg }) => {
               fontSize: `${textOptions.fontSize}px`,
             }}
             onMouseDown={handleMouseDown}
+            ref={itemRef}
           >
             <input
               type="text"
