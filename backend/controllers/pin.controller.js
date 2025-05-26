@@ -74,21 +74,26 @@ export const createPin = async (req, res) => {
   let width;
   let height;
 
-  if (canvasOptions.size !== "original") {
-    clientAspectRatio =
-      parsedCanvasOptions.size.split(":")[0] /
-      parsedCanvasOptions.size.split(":")[1];
+  if (parsedCanvasOptions.size !== "original") {
+    // For predefined aspect ratios (e.g., "16:9")
+    const [width, height] = parsedCanvasOptions.size.split(":").map(Number);
+    clientAspectRatio = width / height;
   } else {
-    parsedCanvasOptions.orientation === originalOrientation
-      ? (clientAspectRatio = originalOrientation)
-      : (clientAspectRatio = 1 / originalAspectRatio);
+    // For "original" size
+    if (parsedCanvasOptions.orientation === originalOrientation) {
+      // Keep original aspect ratio
+      clientAspectRatio = previewImg.width / previewImg.height;
+    } else {
+      // Flip the aspect ratio for opposite orientation
+      clientAspectRatio = previewImg.height / previewImg.width;
+    }
   }
 
   width = metadata.width;
   height = metadata.width / clientAspectRatio;
 
   const imagekit = new ImageKit({
-    publicKey: process.env.IK_PUBLIC_KEY,
+    publicKey: process.env.IK_PUBLICK_KEY,
     privateKey: process.env.IK_PRIVATE_KEY,
     urlEndpoint: process.env.IK_URL_ENDPOINT,
   });
@@ -98,12 +103,27 @@ export const createPin = async (req, res) => {
     (parsedTextOptions.top * height) / parsedCanvasOptions.height
   );
 
-  const transformationString = `w-${width},h-${height}${
-    originalAspectRatio > clientAspectRatio ? ",cm-pad_resize" : ""
-  },bg-${parsedCanvasOptions.backgroundColor.substring(1)}${
+  let croppingStrategy = "";
+
+  if (parsedCanvasOptions.size !== "original") {
+    if (originalAspectRatio > clientAspectRatio) {
+      croppingStrategy = ",cm-pad_resize";
+    }
+  } else {
+    if (
+      originalOrientation === "landscape" &&
+      parsedCanvasOptions.orientation === "portrait"
+    ) {
+      croppingStrategy = ",cm-pad_resize";
+    }
+  }
+
+  const transformationString = `w-${width},h-${height}${croppingStrategy},bg-${parsedCanvasOptions.backgroundColor.substring(
+    1
+  )}${
     parsedTextOptions.text
       ? `,l-text,i-${parsedTextOptions.text},fs-${
-          parsedTextOptions.fontSize
+          parsedTextOptions.fontSize * 2.1
         },lx-${textLeftPosition},ly-${textTopPosition},co-${parsedTextOptions.color.substring(
           1
         )},l-end`
@@ -156,11 +176,11 @@ export const interactionCheck = async (req, res) => {
 
     const userId = payload.userId;
 
-    const isLiked = await Like.fondOne({
+    const isLiked = await Like.findOne({
       user: userId,
       pin: id,
     });
-    const isSaved = await Save.fondOne({
+    const isSaved = await Save.findOne({
       user: userId,
       pin: id,
     });
@@ -213,5 +233,5 @@ export const interact = async (req, res) => {
     }
   }
 
-  return res.satatus(200).json({ message: "Successful" });
+  return res.status(200).json({ message: "Successful" });
 };

@@ -35,7 +35,7 @@ const Workspace = ({ previewImg }) => {
     setTextOptions({
       ...textOptions,
       left: e.clientX - offset.current.x,
-      left: e.clientY - offset.current.y,
+      top: e.clientY - offset.current.y,
     });
   };
 
